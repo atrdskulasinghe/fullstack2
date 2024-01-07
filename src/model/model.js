@@ -13,22 +13,19 @@ const UserSchema = new Schema({
 
 const MovieSchema = new Schema({
      movieName: String,
-     startDate: {
-          type: Date,
-          default: Date.now
-     },
-     endDate: {
-          type: Date,
-          default: Date.now
-     },
-     language: String,
-     time1: String,
-     time2: String,
-     time3: String,
+     startDate: Date,
+     endDate: Date,
      summary: String,
      imageUrl: String,
      coverUrl: String,
      link: String
+});
+
+const ShowTimeSchema = new Schema({
+     movieId: String,
+     time1: String,
+     time2: String,
+     time3: String,
 });
 
 
@@ -46,10 +43,12 @@ const BookingSchema = new Schema({
 
 const User = mongoose.model("User", UserSchema);
 const Movie = mongoose.model("Movie", MovieSchema);
+const ShowTime = mongoose.model("ShowTime", ShowTimeSchema);
 const Booking = mongoose.model("Booking", BookingSchema);
 
 module.exports = {
      User,
      Movie,
+     ShowTimeSchema,
      Booking
 };

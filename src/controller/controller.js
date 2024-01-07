@@ -1,4 +1,4 @@
-const { User, Movie, Booking } = require("../model/model.js"); // Adjust the path according to your project structure
+const { User, Movie, ShowTime, Booking } = require("../model/model.js");
 
 const addNewUser = (req, res) => {
      const newUser = new User(req.body);
@@ -76,6 +76,31 @@ const getMovieWidthId = (req, res) => {
           })
 }
 
+const updateMovie = (req, res) => {
+     const updateData = req.body;
+     Movie.findByIdAndUpdate(req.params.userId, updateData, { new: true })
+          .then((updateUser) => {
+               if (!req.params.userId) {
+                    res.status(400).json("user not found")
+               }
+               res.json(updateUser);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const deleteMovie = (req, res) => {
+     Movie.findByIdAndDelete(req.params.userId)
+          .then((deleteUser) => {
+               if (!req.params.userId) {
+                    res.status(400).json("user not found")
+               }
+               res.json("User deleted successfull");
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
 const addNewMovie = (req, res) => {
      const newUser = new Movie(req.body);
      newUser
@@ -86,6 +111,63 @@ const addNewMovie = (req, res) => {
                res.status(500).send(err);
           })
 }
+
+// show time
+
+const getShowTime = (req, res) => {
+     ShowTime.find({})
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const getShowTimeWidthId = (req, res) => {
+     ShowTime.findById(req.params.UserId)
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const updateShowTime = (req, res) => {
+     const updateData = req.body;
+     ShowTime.findByIdAndUpdate(req.params.userId, updateData, { new: true })
+          .then((updateShowTime) => {
+               if (!req.params.userId) {
+                    res.status(400).json("user not found")
+               }
+               res.json(updateShowTime);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const deleteShowTime = (req, res) => {
+     ShowTime.findByIdAndDelete(req.params.userId)
+          .then((deleteShowTime) => {
+               if (!req.params.userId) {
+                    res.status(400).json("user not found")
+               }
+               res.json("User deleted successfull");
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const addShowTime = (req, res) => {
+     const newUser = new ShowTime(req.body);
+     newUser
+          .save()
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
 
 // booking
 
@@ -125,9 +207,19 @@ module.exports = {
      getUserWithId,
      updateUser,
      deleteUser,
+
      getMovie,
      getMovieWidthId,
      addNewMovie,
+     updateMovie,
+     deleteMovie,
+
+     getShowTime,
+     getShowTimeWidthId,
+     addShowTime,
+     updateShowTime,
+     deleteShowTime,
+
      getBooking,
      getBookingWidthId,
      addNewBooking

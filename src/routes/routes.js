@@ -1,17 +1,29 @@
 const express = require("express");
 const router = express.Router();
 
-const { addNewUser,
+const {
+     addNewUser,
      getUser,
      getUserWithId,
      updateUser,
      deleteUser,
+
      getMovie,
      getMovieWidthId,
      addNewMovie,
+     updateMovie,
+     deleteMovie,
+
+     getShowTime,
+     getShowTimeWidthId,
+     addShowTime,
+     updateShowTime,
+     deleteShowTime,
+
      getBooking,
      getBookingWidthId,
-     addNewBooking } = require("../controller/controller.js");
+     addNewBooking
+} = require("../controller/controller.js");
 
 router.route("/")
      .get(getUser)
@@ -19,9 +31,17 @@ router.route("/")
 
 router.route("/movie")
      .get(getMovie)
-     .post(addNewMovie);
+     .post(addNewMovie)
+     .put(updateMovie)
+     .delete(deleteMovie);
 
-router.route("/movie")
+router.route("/showtime")
+     .get(getShowTime)
+     .post(addShowTime)
+     .put(updateShowTime)
+     .delete(deleteShowTime);
+
+router.route("/booking")
      .get(getBooking)
      .post(addNewBooking);
 
@@ -36,5 +56,9 @@ router.route("/movie/:movieId")
 
 router.route("/booking/:bookingId")
      .get(getBookingWidthId);
+
+
+router.route("/showtime/:showtimeId")
+     .get(getShowTimeWidthId);
 
 module.exports = router;

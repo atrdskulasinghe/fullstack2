@@ -9,26 +9,33 @@ import Footer from '../components/Footer.js';
 export default function SeatBook() {
 
     useEffect(() => {
-        const handleMenuToggle = () => {
-            const menuIcon = document.querySelector(".menu-icon");
-            const menu = document.querySelector(".menu");
-            const menuClose = document.querySelector(".menu-close");
+        const menuIcon = document.querySelector(".menu-icon");
+        const menu = document.querySelector(".menu");
+        const menuClose = document.querySelector(".menu-close");
+        const seat = document.querySelectorAll(".seat");
+    
+        if (menuIcon && menu && menuClose) {
+            menuIcon.addEventListener("click", () => {
+                menuIcon.classList.toggle("active");
+                menu.classList.toggle("active");
+            });
+    
+            menuClose.addEventListener("click", () => {
+                menuIcon.classList.toggle("active");
+                menu.classList.toggle("active");
+            });
+        }
+    
+        for (let i = 0; i < seat.length; i++) {
+            seat[i].addEventListener("click", () => {
+                if (i !== 0) {
+                    seat[i].classList.toggle("active");
+                }
+            });
+        }
 
-            if (menuIcon && menu && menuClose) {
-                menuIcon.addEventListener("click", () => {
-                    menuIcon.classList.toggle("active");
-                    menu.classList.toggle("active");
-                });
-
-                menuClose.addEventListener("click", () => {
-                    menuIcon.classList.toggle("active");
-                    menu.classList.toggle("active");
-                });
-            }
-        };
-
-        handleMenuToggle();
     }, []);
+    
 
     return (
         <div>
