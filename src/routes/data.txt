@@ -1,0 +1,9 @@
+{
+    "movieName": "ARQ (English)",
+    "time1": "08.30AM",
+    "time2": "11.30PM",
+    "time3": "",
+    "summary": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro est possimus consectetur. Consequuntur iure necessitatibus corrupti, obcaecati eveniet itaque ipsa culpa fuga molestias dicta! Consequatur facere obcaecati eum minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro est possimus consectetur. Consequuntur iure necessitatibus corrupti, obcaecati eveniet itaque ipsa culpa fuga molestias dicta! Consequatur facere obcaecati eum minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro est possimus consectetur. Consequuntur iure necessitatibus corrupti, obcaecati eveniet itaque ipsa culpa fuga molestias dicta! Consequatur facere obcaecati eum minima.",
+    "imageUrl": "4",
+    "coverUrl": "4"
+}

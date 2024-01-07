@@ -11,6 +11,40 @@ const UserSchema = new Schema({
      confirmPassword: String
 });
 
-const User = mongoose.model("userData", UserSchema);
+const MovieSchema = new Schema({
+     movieName: String,
+     startDate: {
+          type: Date,
+          default: Date.now
+     },
+     time1: String,
+     time2: String,
+     time3: String,
+     summary: String,
+     imageUrl: String,
+     coverUrl: String,
+     link: String
+});
 
-module.exports = User;
+
+const BookingSchema = new Schema({
+     userId: String,
+     movieId: String,
+     time: String,
+     date: String,
+     seats: String,
+     adultTicket: String,
+     childrenTicket: String,
+     totalAmount: String,
+     method: String
+});
+
+const User = mongoose.model("User", UserSchema);
+const Movie = mongoose.model("Movie", MovieSchema);
+const Booking = mongoose.model("Booking", BookingSchema);
+
+module.exports = {
+     User,
+     Movie,
+     Booking
+};

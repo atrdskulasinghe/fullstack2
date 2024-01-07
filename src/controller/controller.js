@@ -1,4 +1,4 @@
-const User = require("../model/model.js")
+const { User, Movie, Booking } = require("../model/model.js"); // Adjust the path according to your project structure
 
 const addNewUser = (req, res) => {
      const newUser = new User(req.body);
@@ -15,6 +15,7 @@ const addNewUser = (req, res) => {
 const getUser = (req, res) => {
      User.find({})
           .then((user) => {
+               // req.session.user = { email: email };
                res.json(user);
           }).catch((err) => {
                res.status(500).send(err);
@@ -55,10 +56,79 @@ const deleteUser = (req, res) => {
           })
 }
 
+// movie
+
+const getMovie = (req, res) => {
+     Movie.find({})
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const getMovieWidthId = (req, res) => {
+     Movie.findById(req.params.UserId)
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const addNewMovie = (req, res) => {
+     const newUser = new Movie(req.body);
+     newUser
+          .save()
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+// booking
+
+
+const getBooking = (req, res) => {
+     Booking.find({})
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const getBookingWidthId = (req, res) => {
+     Booking.findById(req.params.UserId)
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
+const addNewBooking = (req, res) => {
+     const newUser = new Booking(req.body);
+     newUser
+          .save()
+          .then((user) => {
+               res.json(user);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
 module.exports = {
      addNewUser,
      getUser,
      getUserWithId,
      updateUser,
-     deleteUser
+     deleteUser,
+     getMovie,
+     getMovieWidthId,
+     addNewMovie,
+     getBooking,
+     getBookingWidthId,
+     addNewBooking
 }
