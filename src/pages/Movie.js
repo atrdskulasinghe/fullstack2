@@ -6,6 +6,7 @@ import Menu from '../components/MobileMenu.js';
 import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
 
+import imageCover from '../images/movie/cover/1.jpg';
 
 export default function Movie() {
     useEffect(() => {
@@ -37,7 +38,7 @@ export default function Movie() {
                 <section>
                     <div className="movie-header">
                         <div className="movie-header-background">
-                            <img src="./components/images/footer-background.jpg" alt="" />
+                            <img src={imageCover} alt="" />
                         </div>
                         <div className="content">
                             <div className="movie-content">

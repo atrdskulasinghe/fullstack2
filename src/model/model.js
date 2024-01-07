@@ -17,6 +17,11 @@ const MovieSchema = new Schema({
           type: Date,
           default: Date.now
      },
+     endDate: {
+          type: Date,
+          default: Date.now
+     },
+     language: String,
      time1: String,
      time2: String,
      time3: String,
