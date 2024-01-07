@@ -16,6 +16,11 @@ import Movies from './pages/Movies.js';
 import Profile from './pages/Profile.js';
 import SeatBook from './pages/SeatBook.js';
 import Success from './pages/Success.js';
+import Dashboard from './pages/admin/Dashboard.js';
+import AddMovies from './pages/admin/AddMovies.js';
+import AddShowtimes from './pages/admin/AddShowtimes.js';
+import AddedMovies from './pages/admin/AddedMovies.js';
+import EditMovie from './pages/admin/EditMovie.js';
 
 function App() {
   return (
@@ -33,6 +38,11 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/seatbook" element={<SeatBook />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/add-movies" element={<AddMovies />} />
+          <Route path="/admin/add-showtimes" element={<AddShowtimes />} />
+          <Route path="/admin/show-movies" element={<AddedMovies />} />
+          <Route path="/admin/edit-movie" element={<EditMovie />} />
         </Routes>
       </Router>
     </div>

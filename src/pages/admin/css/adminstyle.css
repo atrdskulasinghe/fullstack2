@@ -1,0 +1,498 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap");
+
+
+/* - - navbar starts from here - - */
+
+.page-content {
+  display: flex;
+}
+
+.page-content .navbar {
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 30%;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  border-right: 2px solid #333;
+  transition: transform 0.3s ease;
+}
+
+.page-content .navbar .head {
+  background-color: #63666a;
+  font-weight: 800;
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.page-content .navbar .head .menu-btn {
+    margin-left: 2rem;
+    display: none;
+}
+
+.page-content .navbar .head .logo-name {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.page-content .navbar .admin-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 2rem;
+}
+
+.page-content .navbar .admin-info .admin-img {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.page-content .navbar .admin-info .admin-img img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.page-content .navbar .nav-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content .navbar .nav-menu a {
+  padding: 1rem 1rem 1rem 5rem;
+  color: #333;
+}
+
+.page-content .navbar .nav-menu a:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+.page-content .navbar .logout {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.page-content .navbar .logout a {
+  color: #333;
+  padding: 1rem 1rem 1rem 5rem;
+  width: 100%;
+}
+
+.page-content .navbar .logout a:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+/* - - right-content starts from here - - */
+
+.page-content .right-content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+.page-content .right-content .head {
+  background-color: #63666a;
+  font-weight: 600;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-content .right-content .head .admin-menu {
+  display: flex;
+  padding-left: 2rem;
+  gap: 1rem;
+}
+
+.page-content .right-content .head .admin-menu .menu-btn {
+  cursor: pointer;
+  display: none;
+}
+
+.page-content .right-content .head .admin-menu .menu-title {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.page-content .right-content .head .profile-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.page-content .right-content .head .profile-icon img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.page-content .right-content {
+  height: 100%;
+}
+
+.page-content .right-content .right-page-background {
+  background-color: #d9d9d9;
+  height: 100%;
+}
+
+.page-content .right-content .right-page-background .right-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #fff;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+
+/* ----- dashboard starts from here ----- */
+
+.page-content .right-content .right-page-background .right-page .left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+}
+
+.page-content .right-content .right-page-background .right-page .left-column .nav-card {
+    display: flex;
+    gap: 3rem;
+    width: 80%;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9d9d9;
+    color: #333;
+    cursor: pointer;
+}
+
+.page-content .right-content .right-page-background .right-page .left-column .nav-card .icon {
+    font-size: 7rem;
+}
+
+.page-content .right-content .right-page-background .right-page .left-column .nav-card:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ----- add-movies page starts from here ----- */
+
+.page-content .right-content .right-page-background .right-page .movie-img {
+  height: 160px;
+  width: 120px;
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  position: relative;
+}
+
+.page-content .right-content .right-page-background .right-page .movie-img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.page-content .right-content .right-page-background .right-page .movie-img .flexy-btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.page-content .right-content .right-page-background .right-page .movie-img .flexy-btns .edit-btn {
+  color: orange;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.page-content .right-content .right-page-background .right-page .movie-img .flexy-btns .delete-btn {
+  color: red;
+  font-size: 1.4rem;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+}
+
+
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .image-upload-container {
+  text-align: center;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .image-upload-container
+  .custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  transition: background-color 0.3s;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .image-upload-container
+  .custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .image-upload-container
+  #imageInput {
+  display: none;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .image-upload-container
+  img {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.page-content .right-content .right-page-background .right-page .input-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .input-row
+  label {
+  font-size: 1.3rem;
+  text-align: left;
+  width: 20%;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .input-row
+  .input-field {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #d9d9d9;
+}
+
+.page-content .right-content .right-page-background .right-page .crud-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 3rem;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .crud-buttons
+  button {
+  background-color: #d9d9d9;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .crud-buttons
+  .insert:hover {
+  background-color: #45a049;
+  color: #fff;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .crud-buttons
+  .update:hover {
+  background-color: yellowgreen;
+  color: #fff;
+}
+
+.page-content
+  .right-content
+  .right-page-background
+  .right-page
+  .crud-buttons
+  .delete:hover {
+  background-color: red;
+  color: #fff;
+}
+
+/* ----- added movies ------ */
+
+.page-content .right-content .right-page-background .added-movies {
+  background-color: #fff;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.page-content .right-content .right-page-background .added-movies .grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 8rem);
+  justify-content: start;
+  gap: 2rem;
+
+}
+
+.page-content .right-content .right-page-background .added-movies .grid-container .movie-img {
+  height: 160px;
+  width: 120px;
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  position: relative;
+}
+
+.page-content .right-content .right-page-background .added-movies .grid-container .movie-img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.page-content .right-content .right-page-background .added-movies .grid-container .movie-img .flexy-btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.page-content .right-content .right-page-background .added-movies .grid-container .movie-img .flexy-btns .edit-btn {
+  color: orange;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.page-content .right-content .right-page-background .added-movies .grid-container .movie-img .flexy-btns .delete-btn {
+  color: red;
+  font-size: 1.4rem;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+}
+
+
+
+
+
+
+@media (max-width: 991px) {
+  .page-content .right-content .right-page-background .right-page .input-row {
+    flex-direction: column;
+  }
+
+  .page-content
+    .right-content
+    .right-page-background
+    .right-page
+    .input-row
+    label {
+    width: 100%;
+  }
+
+  .page-content
+    .right-content
+    .right-page-background
+    .right-page
+    .input-row
+    .input-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 850px) {
+  .page-content .right-content .head .admin-menu .menu-btn {
+    display: block;
+  }
+
+  .page-content .navbar {
+    display: none;
+  }
+
+  .page-content.sidebar-open .navbar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 0;
+    height: 100%;
+    width: 320px;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+
+  .page-content.sidebar-open .navbar .head .menu-btn {
+    display: block;
+  }
+
+  .page-content .right-content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+
+    .page-content .right-content .right-page-background .right-page .crud-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .page-content .right-content .right-page-background .right-page .left-column .nav-card .icon {
+        font-size: 3rem;
+    }
+
+    .page-content .right-content .right-page-background .right-page .left-column .nav-card > * {
+        font-size: 1.3rem;
+    }
+}
