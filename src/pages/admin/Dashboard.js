@@ -28,18 +28,18 @@ export default function Dashboard() {
                   </div>
                   <div className="nav-name">added movies</div>
                 </a>
-                <div className="nav-card">
+                <a href="/admin/added-showtimes" className="nav-card">
                   <div className="icon">
                     <i className="fa-solid fa-check-to-slot"></i>
                   </div>
                   <div className="nav-name">added showtimes</div>
-                </div>
-                <div className="nav-card">
+                </a>
+                <a className="nav-card">
                   <div className="icon">
                     <i className="fa-solid fa-film"></i>
                   </div>
-                  <div className="nav-name">available movies</div>
-                </div>
+                  <div className="nav-name">order history</div>
+                </a>
               </div>
             </div>
           </div>

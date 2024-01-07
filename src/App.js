@@ -21,6 +21,8 @@ import AddMovies from './pages/admin/AddMovies.js';
 import AddShowtimes from './pages/admin/AddShowtimes.js';
 import AddedMovies from './pages/admin/AddedMovies.js';
 import EditMovie from './pages/admin/EditMovie.js';
+import AddedShowtimes from './pages/admin/AddedShowtimes.js';
+import EditShowtime from './pages/admin/EditShowtime.js';
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
           <Route path="/admin/add-showtimes" element={<AddShowtimes />} />
           <Route path="/admin/show-movies" element={<AddedMovies />} />
           <Route path="/admin/edit-movie" element={<EditMovie />} />
+          <Route path="/admin/added-showtimes" element={<AddedShowtimes />} />
+          <Route path="/admin/edit-showtime" element={<EditShowtime />} />
         </Routes>
       </Router>
     </div>
