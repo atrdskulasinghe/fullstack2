@@ -21,7 +21,7 @@ const MovieSchema = new Schema({
      imageUrl: String,
      coverUrl: String,
      adultPrice: String,
-     children: String,
+     childrenPrice: String,
      link: String
 });
 

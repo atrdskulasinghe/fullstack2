@@ -20,6 +20,11 @@ export default function SeatBook() {
     const [adultPrice, setAdultPrice] = useState(null);
     const [childrenPrice, setChildrenPrice] = useState(null);
 
+    const [adultTicket, setAdultTicket] = useState(null);
+    const [childrenTicket, setChildrenTicket] = useState(null);
+
+    const [price, setPrice] = useState(null);
+
     useEffect(() => {
 
         axios.get(`http://localhost:8000/movie/${movieId}`)
@@ -28,10 +33,14 @@ export default function SeatBook() {
                 setLastMovie(res.data);
                 setAdultPrice(res.data.adultPrice);
                 setChildrenPrice(res.data.childrenPrice);
+                setPrice(res.data.adultPrice);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
+
+        setAdultTicket(0);
+        setChildrenTicket(0);
 
         return () => {
             const menuIcon = document.querySelector(".menu-icon");
@@ -79,10 +88,41 @@ export default function SeatBook() {
         setSelectedSeats(updatedSeats);
         output();
 
+        setAdultTicket(updatedSeats.length)
+        console.log(adultTicket);
+
     };
 
     const output = () => {
         console.log(selectedSeats);
+    }
+
+    const handleAdultClickInc = () => {
+        if (selectedSeats.length > adultTicket) {
+            setAdultTicket(adultTicket + 1);
+            setChildrenTicket(childrenTicket - 1);
+        }
+    }
+
+    const handleChildrenClickInc = () => {
+        if (selectedSeats.length > childrenTicket) {
+            setAdultTicket(adultTicket - 1);
+            setChildrenTicket(childrenTicket + 1);
+        }
+    }
+
+    const handleAdultClickDec = () => {
+        if (selectedSeats.length > childrenTicket) {
+            setAdultTicket(adultTicket - 1);
+            setChildrenTicket(childrenTicket + 1);
+        }
+    }
+
+    const handleChildrenClickDec = () => {
+        if (selectedSeats.length > adultTicket) {
+            setAdultTicket(adultTicket + 1);
+            setChildrenTicket(childrenTicket - 1);
+        }
     }
 
     return (
@@ -102,7 +142,7 @@ export default function SeatBook() {
                                         <button className="btn">{time}</button>
                                     </div>
                                     <div className="seat-book-header-content-2">
-                                        <h3>Total Amount : LKR 3000.00</h3>
+                                        <h3>Total Amount : LKR. {(adultTicket * adultPrice) + (childrenTicket * childrenPrice)}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -194,27 +234,27 @@ export default function SeatBook() {
                                 </div>
                                 <div className="seat-ticket-details">
                                     <div className="seat-ticket-details-content">
-                                        <h3>0 Ticket(s) selected. Please select Category</h3>
+                                        <h3>{selectedSeats.length} Ticket(s) selected. Please select Category</h3>
                                         <div className="seat-ticket-details-adults">
                                             <div className="seat-ticket-adults-content-1">
                                                 <h4>ADULTS</h4>
-                                                <p>LKR. 2000.00</p>
+                                                <p>LKR. {lastMovie.adultPrice}</p>
                                             </div>
                                             <div className="seat-ticket-adults-content-2">
-                                                <button className="btn">-</button>
-                                                <h4>0</h4>
-                                                <button className="btn">+</button>
+                                                <button className="btn" onClick={() => handleAdultClickDec()}>-</button>
+                                                <h4>{adultTicket}</h4>
+                                                <button className="btn" onClick={() => handleAdultClickInc()}>+</button>
                                             </div>
                                         </div>
                                         <div className="seat-ticket-details-adults">
                                             <div className="seat-ticket-adults-content-1">
                                                 <h4>CHILDREN</h4>
-                                                <p>LKR. 2000.00</p>
+                                                <p>LKR. {lastMovie.childrenPrice}</p>
                                             </div>
                                             <div className="seat-ticket-adults-content-2">
-                                                <button className="btn">-</button>
-                                                <h4>0</h4>
-                                                <button className="btn">+</button>
+                                                <button className="btn" onClick={() => handleChildrenClickDec()}>-</button>
+                                                <h4>{childrenTicket}</h4>
+                                                <button className="btn" onClick={() => handleChildrenClickInc()}>+</button>
                                             </div>
                                         </div>
                                         <div className="seat-ticket-book-button">
