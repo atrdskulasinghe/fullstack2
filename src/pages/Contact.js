@@ -17,7 +17,10 @@ export default function Contact() {
     const [emailError, setEmailError] = useState("");
     const [subjectError, setSubjectError] = useState("");
     const [messageError, setMessageError] = useState("");
-    const [newUser, setNewUser] = useState({ name: "", email: "",  subject: "", message: "" });
+    const [newUser, setNewUser] = useState({ name: "", email: "", subject: "", message: "" });
+
+    const [showInvalidMessage, setShowInvalidMessage] = useState(false);
+
 
     useEffect(() => {
 
@@ -53,15 +56,15 @@ export default function Contact() {
         }
 
         if (newUser.email === "" || newUser.email === undefined || newUser.email === null) {
-            setEmailError("Please Enter your last name");
+            setEmailError("Please Enter your email");
         }
 
         if (newUser.subject === "" || newUser.subject === undefined || newUser.subject === null) {
-            setSubjectError("Please Enter your email");
+            setSubjectError("Please Enter subject");
         }
 
         if (newUser.message === "" || newUser.message === undefined || newUser.message === null) {
-            setMessageError("Please Enter your phone number");
+            setMessageError("Please Enter your message");
         }
 
 
@@ -69,12 +72,14 @@ export default function Contact() {
         } else if (newUser.email === "" || newUser.email === undefined || newUser.email === null) {
         } else if (newUser.subject === "" || newUser.subject === undefined || newUser.subject === null) {
         } else if (newUser.message === "" || newUser.message === undefined || newUser.message === null) {
-        }else {
+        } else {
+
             axios
                 .post("http://localhost:8000/contact", newUser)
                 .then(() => {
-                    setNewUser({ name: "", email: "", subject: "", message: ""});
-                    window.location.href = "../login";
+                    setNewUser({ name: "", email: "", subject: "", message: "" });
+                    setShowInvalidMessage(true);
+                    // window.location.href = "../login";
                 })
                 .catch((error) => {
                     console.error("error", error);
@@ -132,6 +137,11 @@ export default function Contact() {
                     <div className="content">
                         <div className="contact-content">
                             <div className="contact-content-1">
+                                {showInvalidMessage && (
+                                    <div className="contact-success">
+                                        <p>Your message send successfull</p>
+                                    </div>
+                                )}
                                 <h1>Contact Us</h1>
                                 <div className="input-group-1">
                                     <div className="input-group-content-1">

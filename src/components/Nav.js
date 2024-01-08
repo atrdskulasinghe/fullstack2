@@ -63,7 +63,9 @@ export default function Nav() {
                                     </div>
                                 ) : (
                                     <div className="nav-content-2-dprofile" style={{ background: "red" }}>
-                                        <img src={imageCover} alt="fasd" />
+                                        <Link to="../profile" style={{ width: "100%", height: "100%" }}>
+                                            <img src={imageCover} alt="fasd" />
+                                        </Link>
                                     </div>
                                 )
                             }
@@ -86,7 +88,9 @@ export default function Nav() {
                             ) : (
                                 <div className="nav-content-4">
                                     <div className="nav-contet-4-profile">
-                                        <img src={imageCover} alt="fasd" />
+                                        <Link to="../profile" style={{ width: "100%", height: "100%" }}>
+                                            <img src={imageCover} alt="fasd" />
+                                        </Link>
                                     </div>
                                 </div>
                             )
