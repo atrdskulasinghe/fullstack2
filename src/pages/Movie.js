@@ -22,6 +22,8 @@ export default function Movie() {
     const [showTimes2, setShowTimes2] = useState([]);
     const [showTimes3, setShowTimes3] = useState([]);
 
+    const [clickDate, setClickDate] = useState("");
+    const [clickTime, setClickTime] = useState("");
 
     useEffect(() => {
 
@@ -59,21 +61,16 @@ export default function Movie() {
                     const endDate = new Date(res.data.endDate);
                     const today = new Date();
 
-                    // Calculate three days ahead from today
                     const threeDaysAhead = new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000);
 
-                    // Calculate tomorrow's date
                     const tomorrow = new Date(today);
                     tomorrow.setDate(tomorrow.getDate() + 1);
 
-                    // Check conditions for filtering
                     const isEndDateNotToday = endDate.getDate() !== today.getDate();
                     const isEndDateNotTomorrow = endDate.getDate() !== tomorrow.getDate();
                     const isStartDateWithin3Days = startDate.getTime() <= threeDaysAhead.getTime();
 
-                    // Check if conditions for filtering are met
                     if (isEndDateNotToday && isEndDateNotTomorrow && isStartDateWithin3Days) {
-                        // If conditions are met, set the movie to state or perform necessary actions
                         setMovies([{ date: today }, { date: tomorrow }, { date: new Date(tomorrow.getTime() + 24 * 60 * 60 * 1000) }]);
                     } else {
                         setMovies([]);
@@ -123,10 +120,26 @@ export default function Movie() {
 
         };
 
-
-
-
     }, []);
+
+
+    const handleDateClick = (dateString) => {
+        console.log("Clicked date:", dateString);
+        setClickDate(dateString);
+        if(clickTime){
+            window.location.href = `../seatbook/${movieId}/${clickTime}/${dateString}`;
+        }
+    };
+
+    const handleTimeClick = (time) => {
+        console.log("Clicked time:", time);
+        setClickTime(time);
+        if(clickDate){
+            window.location.href = `../seatbook/${movieId}/${time}/${clickDate}`;
+        }
+    };
+
+
     return (
         <div>
             <div className="container">
@@ -159,13 +172,11 @@ export default function Movie() {
                                 </div>
                             </div>
                         </div>
-
-
                         <div className="movie-date-select">
                             <div className="content">
                                 <div className="movie-date-select-list">
                                     {movies.map((movie, index) => (
-                                        <button className="btn" key={index}>
+                                        <button className="btn" key={index} onClick={() => handleDateClick(new Date(movie.date).toDateString())}>
                                             <p>{new Date(movie.date).toDateString()}</p>
                                         </button>
                                     ))}
@@ -176,18 +187,36 @@ export default function Movie() {
                         <div className="movie-time-select">
                             <div className="content">
                                 <div className="movie-time-select-list">
+                                    {/* {showTimes1.map((time, index) => (
+                                        <button className="btn" key={`showTime1-${index}`} onClick={setClickTime(time)}>
+                                            <p>{time}</p>
+                                        </button>
+                                    ))} */}
+                                    {/* {showTimes2.map((time, index) => (
+                                        <button className="btn" key={`showTime2-${index}`} onClick={setClickTime(time)}>
+                                            <p>{time}</p>
+                                        </button>
+                                    ))} */}
                                     {showTimes1.map((time, index) => (
-                                        <button className="btn" key={`showTime1-${index}`}>
+                                        <button className="btn" key={`showTime1-${index}`} onClick={() => handleTimeClick(time)}>
                                             <p>{time}</p>
                                         </button>
                                     ))}
+
                                     {showTimes2.map((time, index) => (
-                                        <button className="btn" key={`showTime2-${index}`}>
+                                        <button className="btn" key={`showTime2-${index}`} onClick={() => handleTimeClick(time)}>
                                             <p>{time}</p>
                                         </button>
                                     ))}
+
+                                    {/* {showTimes3.map((time, index) => (
+                                        <button className="btn" key={`showTime3-${index}`} onClick={setClickTime(time)}>
+                                            <p>{time}</p>
+                                        </button>
+                                    ))} */}
+
                                     {showTimes3.map((time, index) => (
-                                        <button className="btn" key={`showTime3-${index}`}>
+                                        <button className="btn" key={`showTime3-${index}`} onClick={() => handleTimeClick(time)}>
                                             <p>{time}</p>
                                         </button>
                                     ))}
@@ -198,13 +227,7 @@ export default function Movie() {
                             <div className="content">
                                 <h3>Summery</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro est possimus
-                                    consectetur. Consequuntur iure necessitatibus corrupti, obcaecati eveniet itaque ipsa culpa fuga
-                                    molestias dicta! Consequatur facere obcaecati eum minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro est possimus
-                                    consectetur. Consequuntur iure necessitatibus corrupti, obcaecati eveniet itaque ipsa culpa fuga
-                                    molestias dicta! Consequatur facere obcaecati eum minima.Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis porro est possimus
-                                    consectetur. Consequuntur iure necessitatibus corrupti, obcaecati eveniet itaque ipsa culpa fuga
-                                    molestias dicta! Consequatur facere obcaecati eum minima.
+                                    {lastMovie.summary}
                                 </p>
                             </div>
                         </div>

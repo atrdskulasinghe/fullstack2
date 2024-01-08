@@ -52,12 +52,12 @@ function App() {
           <Route path="/movie" element={isLoggedIn ? <Movie /> : <Navigate to="/login" />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/seatbook" element={<SeatBook />} />
+          <Route path="/seatbook" element={<Movies />} />
           <Route path="/success" element={<Success />} />
           <Route path="/logout" element={<Logout />} />
 
           <Route path="/movie/:movieId" element={<Movie />} />
-
+          <Route path="/seatbook/:movieId/:time/:date" element={<SeatBook />} />
         </Routes>
       </Router>
     </div>
