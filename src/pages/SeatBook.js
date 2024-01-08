@@ -17,8 +17,8 @@ export default function SeatBook() {
 
     const [selectedSeats, setSelectedSeats] = useState([]);
 
-
-
+    const [adultPrice, setAdultPrice] = useState(null);
+    const [childrenPrice, setChildrenPrice] = useState(null);
 
     useEffect(() => {
 
@@ -26,8 +26,8 @@ export default function SeatBook() {
             .then((res) => {
                 console.log(res.data);
                 setLastMovie(res.data);
-
-
+                setAdultPrice(res.data.adultPrice);
+                setChildrenPrice(res.data.childrenPrice);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -77,9 +77,13 @@ export default function SeatBook() {
             updatedSeats.push(seat);
         }
         setSelectedSeats(updatedSeats);
+        output();
 
-        
     };
+
+    const output = () => {
+        console.log(selectedSeats);
+    }
 
     return (
         <div>
@@ -107,62 +111,62 @@ export default function SeatBook() {
                                     <div className="seat-list">
                                         <button className="btn seat ">F</button>
                                         <button className={`btn seat ${selectedSeats.includes('F1') ? 'active' : ''}`} onClick={() => handleSeatClick('F1')}>1</button>
-                                        <button className={`btn seat ${selectedSeats.includes('F2') ? 'active' : ''}`}  onClick={() => handleSeatClick('F2')}>2</button>
-                                        <button className={`btn seat ${selectedSeats.includes('F3') ? 'active' : ''}`}  onClick={() => handleSeatClick('F3')}>3</button>
-                                        <button className={`btn seat ${selectedSeats.includes('F4') ? 'active' : ''}`}  onClick={() => handleSeatClick('F4')}>4</button>
-                                        <button className={`btn seat ${selectedSeats.includes('F5') ? 'active' : ''}`}  onClick={() => handleSeatClick('F5')}>5</button>
-                                        <button className={`btn seat ${selectedSeats.includes('F6') ? 'active' : ''}`}  onClick={() => handleSeatClick('F6')}>6</button>
-                                        <button className={`btn seat ${selectedSeats.includes('F7') ? 'active' : ''}`}  onClick={() => handleSeatClick('F7')}>7</button>
+                                        <button className={`btn seat ${selectedSeats.includes('F2') ? 'active' : ''}`} onClick={() => handleSeatClick('F2')}>2</button>
+                                        <button className={`btn seat ${selectedSeats.includes('F3') ? 'active' : ''}`} onClick={() => handleSeatClick('F3')}>3</button>
+                                        <button className={`btn seat ${selectedSeats.includes('F4') ? 'active' : ''}`} onClick={() => handleSeatClick('F4')}>4</button>
+                                        <button className={`btn seat ${selectedSeats.includes('F5') ? 'active' : ''}`} onClick={() => handleSeatClick('F5')}>5</button>
+                                        <button className={`btn seat ${selectedSeats.includes('F6') ? 'active' : ''}`} onClick={() => handleSeatClick('F6')}>6</button>
+                                        <button className={`btn seat ${selectedSeats.includes('F7') ? 'active' : ''}`} onClick={() => handleSeatClick('F7')}>7</button>
                                     </div>
                                     <div className="seat-list">
                                         <button className="btn seat">E</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E1') ? 'active' : ''}`}  onClick={() => handleSeatClick('E1')}>1</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E2') ? 'active' : ''}`}  onClick={() => handleSeatClick('E2')}>2</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E3') ? 'active' : ''}`}  onClick={() => handleSeatClick('E3')}>3</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E4') ? 'active' : ''}`}  onClick={() => handleSeatClick('E4')}>4</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E5') ? 'active' : ''}`}  onClick={() => handleSeatClick('E5')}>5</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E6') ? 'active' : ''}`}  onClick={() => handleSeatClick('E6')}>6</button>
-                                        <button className={`btn seat ${selectedSeats.includes('E7') ? 'active' : ''}`}  onClick={() => handleSeatClick('E7')}>7</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E1') ? 'active' : ''}`} onClick={() => handleSeatClick('E1')}>1</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E2') ? 'active' : ''}`} onClick={() => handleSeatClick('E2')}>2</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E3') ? 'active' : ''}`} onClick={() => handleSeatClick('E3')}>3</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E4') ? 'active' : ''}`} onClick={() => handleSeatClick('E4')}>4</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E5') ? 'active' : ''}`} onClick={() => handleSeatClick('E5')}>5</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E6') ? 'active' : ''}`} onClick={() => handleSeatClick('E6')}>6</button>
+                                        <button className={`btn seat ${selectedSeats.includes('E7') ? 'active' : ''}`} onClick={() => handleSeatClick('E7')}>7</button>
                                     </div>
                                     <div className="seat-list">
                                         <button className="btn seat">D</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D1') ? 'active' : ''}`}  onClick={() => handleSeatClick('D1')}>1</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D2') ? 'active' : ''}`}  onClick={() => handleSeatClick('D2')}>2</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D3') ? 'active' : ''}`}  onClick={() => handleSeatClick('D3')}>3</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D4') ? 'active' : ''}`}  onClick={() => handleSeatClick('D4')}>4</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D5') ? 'active' : ''}`}  onClick={() => handleSeatClick('D5')}>5</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D6') ? 'active' : ''}`}  onClick={() => handleSeatClick('D6')}>6</button>
-                                        <button className={`btn seat ${selectedSeats.includes('D7') ? 'active' : ''}`}  onClick={() => handleSeatClick('D7')}>7</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D1') ? 'active' : ''}`} onClick={() => handleSeatClick('D1')}>1</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D2') ? 'active' : ''}`} onClick={() => handleSeatClick('D2')}>2</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D3') ? 'active' : ''}`} onClick={() => handleSeatClick('D3')}>3</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D4') ? 'active' : ''}`} onClick={() => handleSeatClick('D4')}>4</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D5') ? 'active' : ''}`} onClick={() => handleSeatClick('D5')}>5</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D6') ? 'active' : ''}`} onClick={() => handleSeatClick('D6')}>6</button>
+                                        <button className={`btn seat ${selectedSeats.includes('D7') ? 'active' : ''}`} onClick={() => handleSeatClick('D7')}>7</button>
                                     </div>
                                     <div className="seat-list">
                                         <button className="btn seat">C</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C1') ? 'active' : ''}`}  onClick={() => handleSeatClick('C1')}>1</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C2') ? 'active' : ''}`}  onClick={() => handleSeatClick('C2')}>2</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C3') ? 'active' : ''}`}  onClick={() => handleSeatClick('C3')}>3</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C4') ? 'active' : ''}`}  onClick={() => handleSeatClick('C4')}>4</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C5') ? 'active' : ''}`}  onClick={() => handleSeatClick('C5')}>5</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C6') ? 'active' : ''}`}  onClick={() => handleSeatClick('C6')}>6</button>
-                                        <button className={`btn seat ${selectedSeats.includes('C7') ? 'active' : ''}`}  onClick={() => handleSeatClick('C7')}>7</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C1') ? 'active' : ''}`} onClick={() => handleSeatClick('C1')}>1</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C2') ? 'active' : ''}`} onClick={() => handleSeatClick('C2')}>2</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C3') ? 'active' : ''}`} onClick={() => handleSeatClick('C3')}>3</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C4') ? 'active' : ''}`} onClick={() => handleSeatClick('C4')}>4</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C5') ? 'active' : ''}`} onClick={() => handleSeatClick('C5')}>5</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C6') ? 'active' : ''}`} onClick={() => handleSeatClick('C6')}>6</button>
+                                        <button className={`btn seat ${selectedSeats.includes('C7') ? 'active' : ''}`} onClick={() => handleSeatClick('C7')}>7</button>
                                     </div>
                                     <div className="seat-list">
                                         <button className="btn seat">B</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B1') ? 'active' : ''}`}  onClick={() => handleSeatClick('B1')}>1</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B2') ? 'active' : ''}`}  onClick={() => handleSeatClick('B2')}>2</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B3') ? 'active' : ''}`}  onClick={() => handleSeatClick('B3')}>3</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B4') ? 'active' : ''}`}  onClick={() => handleSeatClick('B4')}>4</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B5') ? 'active' : ''}`}  onClick={() => handleSeatClick('B5')}>5</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B6') ? 'active' : ''}`}  onClick={() => handleSeatClick('B6')}>6</button>
-                                        <button className={`btn seat ${selectedSeats.includes('B7') ? 'active' : ''}`}  onClick={() => handleSeatClick('B7')}>7</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B1') ? 'active' : ''}`} onClick={() => handleSeatClick('B1')}>1</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B2') ? 'active' : ''}`} onClick={() => handleSeatClick('B2')}>2</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B3') ? 'active' : ''}`} onClick={() => handleSeatClick('B3')}>3</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B4') ? 'active' : ''}`} onClick={() => handleSeatClick('B4')}>4</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B5') ? 'active' : ''}`} onClick={() => handleSeatClick('B5')}>5</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B6') ? 'active' : ''}`} onClick={() => handleSeatClick('B6')}>6</button>
+                                        <button className={`btn seat ${selectedSeats.includes('B7') ? 'active' : ''}`} onClick={() => handleSeatClick('B7')}>7</button>
                                     </div>
                                     <div className="seat-list">
                                         <button className="btn seat">A</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A1') ? 'active' : ''}`}  onClick={() => handleSeatClick('A1')}>1</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A2') ? 'active' : ''}`}  onClick={() => handleSeatClick('A2')}>2</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A3') ? 'active' : ''}`}  onClick={() => handleSeatClick('A3')}>3</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A4') ? 'active' : ''}`}  onClick={() => handleSeatClick('A4')}>4</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A5') ? 'active' : ''}`}  onClick={() => handleSeatClick('A5')}>5</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A6') ? 'active' : ''}`}  onClick={() => handleSeatClick('A6')}>6</button>
-                                        <button className={`btn seat ${selectedSeats.includes('A7') ? 'active' : ''}`}  onClick={() => handleSeatClick('A7')}>7</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A1') ? 'active' : ''}`} onClick={() => handleSeatClick('A1')}>1</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A2') ? 'active' : ''}`} onClick={() => handleSeatClick('A2')}>2</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A3') ? 'active' : ''}`} onClick={() => handleSeatClick('A3')}>3</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A4') ? 'active' : ''}`} onClick={() => handleSeatClick('A4')}>4</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A5') ? 'active' : ''}`} onClick={() => handleSeatClick('A5')}>5</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A6') ? 'active' : ''}`} onClick={() => handleSeatClick('A6')}>6</button>
+                                        <button className={`btn seat ${selectedSeats.includes('A7') ? 'active' : ''}`} onClick={() => handleSeatClick('A7')}>7</button>
                                     </div>
                                     <div className="seat-screen">
                                         <div className="seat-screen-light"></div>

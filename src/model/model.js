@@ -20,6 +20,8 @@ const MovieSchema = new Schema({
      summary: String,
      imageUrl: String,
      coverUrl: String,
+     adultPrice: String,
+     children: String,
      link: String
 });
 
