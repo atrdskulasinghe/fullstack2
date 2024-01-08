@@ -1,4 +1,4 @@
-const { User, Movie, ShowTime, Booking } = require("../model/model.js");
+const { User, Movie, ShowTime, Booking ,Contact} = require("../model/model.js");
 
 const addNewUser = (req, res) => {
      const newUser = new User(req.body);
@@ -232,6 +232,21 @@ const addNewBooking = (req, res) => {
           })
 }
 
+// contact
+
+
+
+const addNewContact = (req, res) => {
+     const newContact = new Contact(req.body);
+     newContact
+          .save()
+          .then((contact) => {
+               res.json(contact);
+          }).catch((err) => {
+               res.status(500).send(err);
+          })
+}
+
 module.exports = {
      addNewUser,
      getUser,
@@ -254,5 +269,7 @@ module.exports = {
 
      getBooking,
      getBookingWidthId,
-     addNewBooking
+     addNewBooking,
+
+     addNewContact
 }

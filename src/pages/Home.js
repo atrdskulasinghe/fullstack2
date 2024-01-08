@@ -3,8 +3,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 import '../components/style/home.css';
 import '../components/style/movie-list.css';
 
@@ -39,7 +37,6 @@ export default function Home() {
                     menu.classList.toggle("active");
                 });
             }
-
 
             axios.get('http://localhost:8000/movie')
                 .then((res) => {

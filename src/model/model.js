@@ -43,14 +43,24 @@ const BookingSchema = new Schema({
      totalAmount: String
 });
 
+const ContactSchema = new Schema({
+     name: String,
+     email: String,
+     subject: String,
+     message: String
+});
+
+
 const User = mongoose.model("User", UserSchema);
 const Movie = mongoose.model("Movie", MovieSchema);
 const ShowTime = mongoose.model("ShowTime", ShowTimeSchema);
 const Booking = mongoose.model("Booking", BookingSchema);
+const Contact = mongoose.model("Contact", ContactSchema);
 
 module.exports = {
      User,
      Movie,
      ShowTime,
-     Booking
+     Booking,
+     Contact
 };

@@ -23,7 +23,10 @@ const {
 
      getBooking,
      getBookingWidthId,
-     addNewBooking
+     addNewBooking,
+
+     addNewContact
+
 } = require("../controller/controller.js");
 
 router.route("/")
@@ -64,5 +67,8 @@ router.route("/booking/:bookingId")
 
 router.route("/showtime/:movieId")
      .get(getShowTimesByMovieId);
+
+router.route("/contact")
+     .post(addNewContact)
 
 module.exports = router;

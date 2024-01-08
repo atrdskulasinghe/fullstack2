@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate,useNavigate  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
 import './components/style/nav.css';
 import './components/style/style.css';
@@ -33,7 +33,7 @@ function App() {
     const handleLogout = () => {
       sessionStorage.removeItem('loggedInUserEmail');
       setIsLoggedIn(false);
-      window.location.href="/"
+      window.location.href = "/"
     };
 
     handleLogout();

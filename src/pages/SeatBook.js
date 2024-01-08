@@ -123,7 +123,7 @@ export default function SeatBook() {
 
     const handleSubmit = () => {
         if (selectedSeats.length > 0) {
-            const url = `../../../success/${movieId}/${time}/${date}/${adultTicket}/${childrenTicket}/${selectedSeats}`;
+            const url = `../../../book/${movieId}/${time}/${date}/${adultTicket}/${childrenTicket}/${selectedSeats}`;
             window.location.href = url;
         }
     }

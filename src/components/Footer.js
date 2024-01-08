@@ -30,7 +30,7 @@ export default function Footer() {
                                         <p><i className="ri-phone-fill"></i>(+100) 123 456 7890</p>
                                     </li>
                                     <li>
-                                        <p><i className="ri-customer-service-2-line"></i>support@realvilla.demo</p>
+                                        <p><i className="ri-customer-service-2-line"></i>support@ticketbook.demo</p>
                                     </li>
                                     <li>
                                         <p><i className="ri-time-line"></i>Mon - Sun / 9:00AM - 8:00PM</p>

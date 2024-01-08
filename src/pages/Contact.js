@@ -1,5 +1,8 @@
+import axios from "axios";
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../components/style/contact.css';
 
 import Menu from '../components/MobileMenu.js';
@@ -9,6 +12,13 @@ import Footer from '../components/Footer.js';
 import background from '../images/ui/background-3.jpg';
 
 export default function Contact() {
+
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [subjectError, setSubjectError] = useState("");
+    const [messageError, setMessageError] = useState("");
+    const [newUser, setNewUser] = useState({ name: "", email: "",  subject: "", message: "" });
+
     useEffect(() => {
 
         return () => {
@@ -30,9 +40,72 @@ export default function Contact() {
         };
 
     }, []);
+
+    const addNewUser = () => {
+
+        setNameError("");
+        setEmailError("");
+        setSubjectError("");
+        setMessageError("");
+
+        if (newUser.name === "" || newUser.name === undefined || newUser.name === null) {
+            setNameError("Please Enter your name");
+        }
+
+        if (newUser.email === "" || newUser.email === undefined || newUser.email === null) {
+            setEmailError("Please Enter your last name");
+        }
+
+        if (newUser.subject === "" || newUser.subject === undefined || newUser.subject === null) {
+            setSubjectError("Please Enter your email");
+        }
+
+        if (newUser.message === "" || newUser.message === undefined || newUser.message === null) {
+            setMessageError("Please Enter your phone number");
+        }
+
+
+        if (newUser.name === "" || newUser.name === undefined || newUser.name === null) {
+        } else if (newUser.email === "" || newUser.email === undefined || newUser.email === null) {
+        } else if (newUser.subject === "" || newUser.subject === undefined || newUser.subject === null) {
+        } else if (newUser.message === "" || newUser.message === undefined || newUser.message === null) {
+        }else {
+            axios
+                .post("http://localhost:8000/contact", newUser)
+                .then(() => {
+                    setNewUser({ name: "", email: "", subject: "", message: ""});
+                    window.location.href = "../login";
+                })
+                .catch((error) => {
+                    console.error("error", error);
+                });
+
+            setNameError("");
+            setEmailError("");
+            setSubjectError("");
+            setMessageError("");
+        }
+
+    };
+
+    const setName = (e) => {
+        setNewUser({ ...newUser, name: e.target.value });
+    };
+
+    const setEmail = (e) => {
+        setNewUser({ ...newUser, email: e.target.value });
+    };
+
+    const setSubject = (e) => {
+        setNewUser({ ...newUser, subject: e.target.value });
+    };
+
+    const setMessage = (e) => {
+        setNewUser({ ...newUser, message: e.target.value });
+    };
+
     return (
         <div>
-
             <div className="container">
                 <Menu></Menu>
                 <Nav></Nav>
@@ -63,30 +136,33 @@ export default function Contact() {
                                 <div className="input-group-1">
                                     <div className="input-group-content-1">
                                         <h2>Your name</h2>
-                                        <input type="text" />
+                                        <input type="text" value={newUser.name} onChange={setName} />
+                                        <p className="signup-input-error">{nameError}</p>
                                     </div>
                                     <div className="input-group-content-2">
                                         <h2>Your email</h2>
-                                        <input type="text" />
+                                        <input type="text" value={newUser.email} onChange={setEmail} />
+                                        <p className="signup-input-error">{emailError}</p>
                                     </div>
                                 </div>
 
                                 <div className="input-group-2">
                                     <h2>Subject</h2>
-                                    <input type="text" />
+                                    <input type="text" value={newUser.subject} onChange={setSubject} />
+                                    <p className="signup-input-error">{subjectError}</p>
                                 </div>
                                 <div className="input-group-2">
                                     <h2>Your message</h2>
-                                    <textarea name=""></textarea>
+                                    <textarea type="text" value={newUser.message} onChange={setMessage}></textarea>
+                                    <p className="signup-input-error">{messageError}</p>
                                 </div>
                                 <div className="contact-content-1-button">
-                                    <button>Submit</button>
+                                    <button onClick={addNewUser}>Submit</button>
                                 </div>
                             </div>
                             <div className="contact-content-2">
-                                <h1 style={{marginTop: '20px'}}>Info Location</h1>
+                                <h1 style={{ marginTop: '20px' }}>Info Location</h1>
                                 <div className="location-content-info">
-
                                     <div className="location-content">
                                         <div className="location-content-icon">
                                             <i className="ri-home-4-fill"></i>
@@ -118,7 +194,6 @@ export default function Contact() {
                 </section>
                 <Footer></Footer>
             </div>
-
         </div>
     )
 }

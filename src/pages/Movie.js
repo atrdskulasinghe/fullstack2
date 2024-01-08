@@ -2,6 +2,7 @@ import axios from "axios";
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useParams } from 'react-router-dom';
 
 
@@ -122,11 +123,10 @@ export default function Movie() {
 
     }, []);
 
-
     const handleDateClick = (dateString) => {
         console.log("Clicked date:", dateString);
         setClickDate(dateString);
-        if(clickTime){
+        if (clickTime) {
             window.location.href = `../seatbook/${movieId}/${clickTime}/${dateString}`;
         }
     };
@@ -134,7 +134,7 @@ export default function Movie() {
     const handleTimeClick = (time) => {
         console.log("Clicked time:", time);
         setClickTime(time);
-        if(clickDate){
+        if (clickDate) {
             window.location.href = `../seatbook/${movieId}/${time}/${clickDate}`;
         }
     };
