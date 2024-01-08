@@ -19,6 +19,7 @@ import play from '../images/ui/Play button arrowhead.png';
 export default function Home() {
 
     const [movies, setMovies] = useState([]);
+    const [lastMovie, setLastMovie] = useState(null);
 
     useEffect(() => {
 
@@ -40,19 +41,22 @@ export default function Home() {
             }
 
 
-            axios.get("http://localhost:8000/movie")
+            axios.get('http://localhost:8000/movie')
                 .then((res) => {
                     setMovies(res.data); // Update state with movie data from the API response
-                    console.log(res.data);
+                    if (res.data.length > 0) {
+                        const lastMovieDetails = res.data[res.data.length - 1]; // Getting the details of the last movie
+                        setLastMovie(lastMovieDetails); // Set the details of the last movie in state
+                        console.log(lastMovieDetails);
+                    }
+                    // console.log(res.data);
                 })
                 .catch((error) => {
-                    console.error("Error:", error);
+                    console.error('Error:', error);
                 });
         };
 
     }, []);
-
-
 
     return (
         <div>
@@ -60,34 +64,37 @@ export default function Home() {
                 <Menu></Menu>
                 <Nav></Nav>
                 <section>
-                    <div className="home-header">
-                        <div className="home-header-background">
-                            <img src={imageCover} alt="" />
-                        </div>
-                        <div className="home-header-content">
-                            <div className="home-header-move-name">
-                                <h3>Interstellar (English)</h3>
+                    {lastMovie && (
+                        <div className="home-header">
+                            <div className="home-header-background">
+                                {/* <img src={imageCover} alt="" /> */}
+                                <img src={require("../images/movie/cover/" + lastMovie.coverUrl + "")} alt="Footer Background" />
                             </div>
-                            <div className="home-header-buttons">
-                                <button className="btn" onclick="window.location.href=''">
-                                    <div className="home-header-button-content-1">
-                                        Buy Ticket
-                                    </div>
-                                    <div className="home-header-button-content-2">
-                                        <img src={ticket} alt="" />
-                                    </div>
-                                </button>
-                                <button className="btn" onclick="window.location.href=''">
-                                    <div className="home-header-button-content-1">
-                                        Watch Trailer
-                                    </div>
-                                    <div className="home-header-button-content-2">
-                                        <img src={play} alt="" />
-                                    </div>
-                                </button>
+                            <div className="home-header-content">
+                                <div className="home-header-move-name">
+                                    <h3>{lastMovie.movieName}</h3>
+                                </div>
+                                <div className="home-header-buttons">
+                                    <button className="btn" onclick="window.location.href=''">
+                                        <div className="home-header-button-content-1"  onClick={() => { window.location.href = `../movie/${lastMovie._id}` }}>
+                                            Buy Ticket
+                                        </div>
+                                        <div className="home-header-button-content-2">
+                                            <img src={ticket} alt="" />
+                                        </div>
+                                    </button>
+                                    <button className="btn" onclick="window.location.href=''">
+                                        <div className="home-header-button-content-1" onClick={() => { window.location.href = `${lastMovie.link}` }}>
+                                            Watch Trailer
+                                        </div>
+                                        <div className="home-header-button-content-2">
+                                            <img src={play} alt="" />
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                     <div className="content">
                         <div className="home-search">
                             <div className="home-search-select">
@@ -149,7 +156,7 @@ export default function Home() {
                             {movies.map((movie, index) => (
                                 <div className="movie-card" key={index}>
                                     <div className="movie-image">
-                                    <img src={require("../images/movie/" + movie.imageUrl + "")} alt="Footer Background" />
+                                        <img src={require("../images/movie/" + movie.imageUrl + "")} alt="" />
                                     </div>
                                     <div className="movie-title">
                                         <h3>{movie.movieName} ({movie.language})</h3>

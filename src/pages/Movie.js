@@ -1,5 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+
 import '../components/style/movie.css';
 
 import Menu from '../components/MobileMenu.js';
@@ -9,7 +12,12 @@ import Footer from '../components/Footer.js';
 import imageCover from '../images/movie/cover/1.jpg';
 
 export default function Movie() {
+
+    const { movieId } = useParams();
+
     useEffect(() => {
+
+        console.log(movieId);
 
         return () => {
             const menuIcon = document.querySelector(".menu-icon");
