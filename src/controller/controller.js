@@ -31,6 +31,22 @@ const getUserWithId = (req, res) => {
           })
 }
 
+const getUserByEmail = (req, res) => {
+     const email = req.params.email;
+   
+     User.find({ email: email })
+       .then((users) => {
+         if (!users || users.length === 0) {
+           return res.status(404).json({ error: 'No user found for the provided email ID' });
+         }
+         res.json(users);
+       })
+       .catch((err) => {
+         console.error(err); 
+         res.status(500).json({ error: 'Internal server error' });
+       });
+   };
+
 const updateUser = (req, res) => {
      const updateData = req.body;
      User.findByIdAndUpdate(req.params.userId, updateData, { new: true })
@@ -219,6 +235,7 @@ const addNewBooking = (req, res) => {
 module.exports = {
      addNewUser,
      getUser,
+     getUserByEmail,
      getUserWithId,
      updateUser,
      deleteUser,

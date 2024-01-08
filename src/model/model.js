@@ -32,7 +32,6 @@ const ShowTimeSchema = new Schema({
      time3: String,
 });
 
-
 const BookingSchema = new Schema({
      userId: String,
      movieId: String,
@@ -41,8 +40,7 @@ const BookingSchema = new Schema({
      seats: String,
      adultTicket: String,
      childrenTicket: String,
-     totalAmount: String,
-     method: String
+     totalAmount: String
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -72,10 +72,6 @@ export default function SeatBook() {
 
     }, []);
 
-
-
-
-
     const handleSeatClick = (seat) => {
         const updatedSeats = [...selectedSeats];
         const index = updatedSeats.indexOf(seat);
@@ -122,6 +118,13 @@ export default function SeatBook() {
         if (selectedSeats.length > adultTicket) {
             setAdultTicket(adultTicket + 1);
             setChildrenTicket(childrenTicket - 1);
+        }
+    }
+
+    const handleSubmit = () => {
+        if (selectedSeats.length > 0) {
+            const url = `../../../success/${movieId}/${time}/${date}/${adultTicket}/${childrenTicket}/${selectedSeats}`;
+            window.location.href = url;
         }
     }
 
@@ -258,7 +261,7 @@ export default function SeatBook() {
                                             </div>
                                         </div>
                                         <div className="seat-ticket-book-button">
-                                            <button className="btn">Continue</button>
+                                            <button className="btn" onClick={() => handleSubmit()}>Continue</button>
                                         </div>
                                     </div>
                                 </div>

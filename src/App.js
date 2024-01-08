@@ -16,6 +16,7 @@ import Movies from './pages/Movies.js';
 import Profile from './pages/Profile.js';
 import SeatBook from './pages/SeatBook.js';
 import Success from './pages/Success.js';
+import Book from "./pages/Book.js";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,6 +59,8 @@ function App() {
 
           <Route path="/movie/:movieId" element={<Movie />} />
           <Route path="/seatbook/:movieId/:time/:date" element={<SeatBook />} />
+          <Route path="/book/:movieId/:time/:date/:adultTicket/:childrenTicket/:selectedSeats" element={<Book />} />
+          <Route path="/success/:movieId/:time/:date/:adultTicket/:childrenTicket/:selectedSeats" element={<Success />} />
         </Routes>
       </Router>
     </div>

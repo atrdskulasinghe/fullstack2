@@ -5,6 +5,7 @@ const {
      addNewUser,
      getUser,
      getUserWithId,
+     getUserByEmail,
      updateUser,
      deleteUser,
 
@@ -49,6 +50,9 @@ router.route("/user/:userId")
      .get(getUserWithId)
      .put(updateUser)
      .delete(deleteUser);
+
+router.route("/useremail/:email")
+     .get(getUserByEmail)
 
 router.route("/movie/:movieId")
      .get(getMovieWidthId)

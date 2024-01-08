@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import '../components/style/success.css';
 
 import Menu from '../components/MobileMenu.js';
@@ -8,7 +10,19 @@ import Footer from '../components/Footer.js';
 
 export default function Success() {
 
+    const { movieId, time, date, adultTicket, childrenTicket, selectedSeats } = useParams();
+    const [lastMovie, setLastMovie] = useState(null);
+
     useEffect(() => {
+
+        axios.get(`http://localhost:8000/movie/${movieId}`)
+            .then((res) => {
+                console.log(res.data);
+                setLastMovie(res.data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
         return () => {
             const menuIcon = document.querySelector(".menu-icon");
@@ -35,6 +49,7 @@ export default function Success() {
             <div className="container">
                 <Menu></Menu>
                 <Nav></Nav>
+                {lastMovie && (
                 <section>
                     <div className="content">
                         <div className="success-content">
@@ -50,10 +65,10 @@ export default function Success() {
                                 <div className="success-details">
                                     <div className="success-details-content">
                                         <div className="success-details-content-1">
-                                            <h3>Interstellar (English)</h3>
+                                            <h3>{lastMovie.movieName} ({lastMovie.language})</h3>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <h3>2</h3>
+                                            <h3>{parseInt(adultTicket)  + parseInt(childrenTicket)}</h3>
                                         </div>
                                     </div>
                                     <div className="success-details-content">
@@ -61,7 +76,7 @@ export default function Success() {
                                             <p>ADULTS TICKETS(2)</p>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <p>2</p>
+                                            <p>{parseInt(adultTicket)}</p>
                                         </div>
                                     </div>
                                     <div className="success-details-content">
@@ -69,7 +84,7 @@ export default function Success() {
                                             <p>CHILDREN TICKETS(2)</p>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <p>2</p>
+                                            <p>{parseInt(childrenTicket)}</p>
                                         </div>
                                     </div>
                                     <div className="success-details-content">
@@ -77,7 +92,7 @@ export default function Success() {
                                             <p>SEAT NUMBERS(2)</p>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <p className="success-seat-number">A1, B2</p>
+                                            <p className="success-seat-number">{selectedSeats}</p>
                                         </div>
                                     </div>
                                     <div className="success-details-content">
@@ -85,23 +100,24 @@ export default function Success() {
                                             <h3>TOTAL AMOUNT</h3>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <h3>LKR. 2000.00</h3>
+                                            <h3>{(adultTicket * lastMovie.adultPrice) + (childrenTicket * lastMovie.childrenPrice)}</h3>
                                         </div>
                                     </div>
                                     <div className="success-details-content">
                                         <div className="success-details-content-1">
-                                            <p>PAYMENT METHOD</p>
+                                            <p>Date</p>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <p>ONLINE</p>
+                                        <p style={{ textAlign: 'right' }}>{date}</p>
+
                                         </div>
                                     </div>
                                     <div className="success-details-content">
                                         <div className="success-details-content-1">
-                                            <p>BOOK ID</p>
+                                            <p>TIME</p>
                                         </div>
                                         <div className="success-details-content-2">
-                                            <p>B15215</p>
+                                            <p>{time}</p>
                                         </div>
                                     </div>
                                     <div className="success-details-button">
@@ -112,6 +128,7 @@ export default function Success() {
                         </div>
                     </div>
                 </section>
+                )}
                 <Footer></Footer>
             </div>
         </div>
