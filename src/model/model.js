@@ -15,6 +15,7 @@ const MovieSchema = new Schema({
      movieName: String,
      startDate: Date,
      endDate: Date,
+     language: String,
      summary: String,
      imageUrl: String,
      coverUrl: String,

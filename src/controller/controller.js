@@ -68,12 +68,17 @@ const getMovie = (req, res) => {
 }
 
 const getMovieWidthId = (req, res) => {
-     Movie.findById(req.params.UserId)
-          .then((user) => {
-               res.json(user);
-          }).catch((err) => {
-               res.status(500).send(err);
+     const movieId = req.params.movieId;
+     Movie.findById(movieId)
+          .then((movie) => {
+               if (!movie) {
+                    return res.status(404).json({ error: 'Movie not found' });
+               }
+               res.json(movie);
           })
+          .catch((err) => {
+               res.status(500).json({ error: 'Internal server error' });
+          });
 }
 
 const updateMovie = (req, res) => {

@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate,useNavigate  } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
 import './components/style/nav.css';
 import './components/style/style.css';
@@ -27,11 +27,18 @@ function App() {
     }
   }, []);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('loggedInUserEmail');
-    setIsLoggedIn(false);
-  };
+  const Logout = () => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+      sessionStorage.removeItem('loggedInUserEmail');
+      setIsLoggedIn(false);
+      window.location.href="/"
+    };
 
+    handleLogout();
+
+    return null;
+  };
   return (
     <div className="App">
       <Router>
@@ -47,7 +54,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/seatbook" element={<SeatBook />} />
           <Route path="/success" element={<Success />} />
-          <Route path="/logout" element={{handleLogout}} />
+          <Route path="/logout" element={<Logout />} />
+
+          <Route path="/movie/:movieId" element={<Movie />} />
+
         </Routes>
       </Router>
     </div>

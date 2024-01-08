@@ -1,5 +1,10 @@
+import axios from "axios";
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+
+
 import '../components/style/home.css';
 import '../components/style/movie-list.css';
 
@@ -12,6 +17,8 @@ import ticket from '../images/ui/Ticket.png';
 import play from '../images/ui/Play button arrowhead.png';
 
 export default function Home() {
+
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
 
@@ -31,9 +38,21 @@ export default function Home() {
                     menu.classList.toggle("active");
                 });
             }
+
+
+            axios.get("http://localhost:8000/movie")
+                .then((res) => {
+                    setMovies(res.data); // Update state with movie data from the API response
+                    console.log(res.data);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
         };
 
     }, []);
+
+
 
     return (
         <div>
@@ -115,7 +134,7 @@ export default function Home() {
                             <h3>Now Showing</h3>
                         </div>
                         <div className="movie-list">
-                            <div className="movie-card">
+                            {/* <div className="movie-card">
                                 <div className="movie-image">
                                     <img src="./components/images/footer-background.jpg" alt="" />
                                 </div>
@@ -125,73 +144,22 @@ export default function Home() {
                                 <div className="movie-button">
                                     <a href="" className="btn">Buy Ticket</a>
                                 </div>
-                            </div>
-                            <div className="movie-card">
-                                <div className="movie-image">
-                                    <img src="./components/images/footer-background.jpg" alt="" />
+                            </div> */}
+
+                            {movies.map((movie, index) => (
+                                <div className="movie-card" key={index}>
+                                    <div className="movie-image">
+                                    <img src={require("../images/movie/" + movie.imageUrl + "")} alt="Footer Background" />
+                                    </div>
+                                    <div className="movie-title">
+                                        <h3>{movie.movieName} ({movie.language})</h3>
+                                    </div>
+                                    <div className="movie-button">
+                                        {/* <a href="#" className="btn">Buy Ticket</a>  */}
+                                        <Link to={`../movie/${movie._id}`}>Buy Ticket</Link>
+                                    </div>
                                 </div>
-                                <div className="movie-title">
-                                    <h3>Kung Fu Panda 4 (English)</h3>
-                                </div>
-                                <div className="movie-button">
-                                    <a href="" className="btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                            <div className="movie-card">
-                                <div className="movie-image">
-                                    <img src="./components/images/footer-background.jpg" alt="" />
-                                </div>
-                                <div className="movie-title">
-                                    <h3>Avatar 3 (English)</h3>
-                                </div>
-                                <div className="movie-button">
-                                    <a href="" className="btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                            <div className="movie-card">
-                                <div className="movie-image">
-                                    <img src="./components/images/footer-background.jpg" alt="" />
-                                </div>
-                                <div className="movie-title">
-                                    <h3>ARQ (English)</h3>
-                                </div>
-                                <div className="movie-button">
-                                    <a href="" className="btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                            <div className="movie-card">
-                                <div className="movie-image">
-                                    <img src="./components/images/footer-background.jpg" alt="" />
-                                </div>
-                                <div className="movie-title">
-                                    <h3>Interstellar (English)</h3>
-                                </div>
-                                <div className="movie-button">
-                                    <a href="" className="btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                            <div className="movie-card">
-                                <div className="movie-image">
-                                    <img src="./components/images/footer-background.jpg" alt="" />
-                                </div>
-                                <div className="movie-title">
-                                    <h3>Interstellar (English)</h3>
-                                </div>
-                                <div className="movie-button">
-                                    <a href="" className="btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                            <div className="movie-card">
-                                <div className="movie-image">
-                                    <img src="./components/images/footer-background.jpg" alt="" />
-                                </div>
-                                <div className="movie-title">
-                                    <h3>Interstellar (English)</h3>
-                                </div>
-                                <div className="movie-button">
-                                    <a href="" className="btn">Buy Ticket</a>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </section>
