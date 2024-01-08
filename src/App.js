@@ -49,7 +49,7 @@ function App() {
           <Route path="/signup" element={!isLoggedIn ? <Signup /> : <Navigate to="../" />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/movie" element={<Movie />} />
+          <Route path="/movie" element={isLoggedIn ? <Movie /> : <Navigate to="/login" />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/seatbook" element={<SeatBook />} />

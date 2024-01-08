@@ -128,14 +128,24 @@ const getShowTime = (req, res) => {
           })
 }
 
-const getShowTimeWidthId = (req, res) => {
-     ShowTime.findById(req.params.UserId)
-          .then((user) => {
-               res.json(user);
-          }).catch((err) => {
-               res.status(500).send(err);
+
+const getShowTimesByMovieId = (req, res) => {
+     const movieId = req.params.movieId;
+     console.log(movieId);
+
+     ShowTime.find({ movieId: movieId })
+          .then((showtimes) => {
+               if (!showtimes || showtimes.length === 0) {
+                    return res.status(404).json({ error: 'No showtimes found for the movie ID' });
+               }
+               res.json(showtimes);
           })
-}
+          .catch((err) => {
+               res.status(500).json({ error: 'Internal server error' });
+          });
+};
+
+
 
 const updateShowTime = (req, res) => {
      const updateData = req.body;
@@ -220,7 +230,7 @@ module.exports = {
      deleteMovie,
 
      getShowTime,
-     getShowTimeWidthId,
+     getShowTimesByMovieId,
      addShowTime,
      updateShowTime,
      deleteShowTime,

@@ -43,10 +43,10 @@ export default function Home() {
 
             axios.get('http://localhost:8000/movie')
                 .then((res) => {
-                    setMovies(res.data); // Update state with movie data from the API response
+                    setMovies(res.data);
                     if (res.data.length > 0) {
-                        const lastMovieDetails = res.data[res.data.length - 1]; // Getting the details of the last movie
-                        setLastMovie(lastMovieDetails); // Set the details of the last movie in state
+                        const lastMovieDetails = res.data[res.data.length - 1]; 
+                        setLastMovie(lastMovieDetails); 
                         console.log(lastMovieDetails);
                     }
                     // console.log(res.data);

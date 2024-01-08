@@ -15,7 +15,7 @@ const {
      deleteMovie,
 
      getShowTime,
-     getShowTimeWidthId,
+     getShowTimesByMovieId,
      addShowTime,
      updateShowTime,
      deleteShowTime,
@@ -58,7 +58,7 @@ router.route("/booking/:bookingId")
      .get(getBookingWidthId);
 
 
-router.route("/showtime/:showtimeId")
-     .get(getShowTimeWidthId);
+router.route("/showtime/:movieId")
+     .get(getShowTimesByMovieId);
 
 module.exports = router;

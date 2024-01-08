@@ -16,6 +16,7 @@ const MovieSchema = new Schema({
      startDate: Date,
      endDate: Date,
      language: String,
+     duration: String,
      summary: String,
      imageUrl: String,
      coverUrl: String,
@@ -50,6 +51,6 @@ const Booking = mongoose.model("Booking", BookingSchema);
 module.exports = {
      User,
      Movie,
-     ShowTimeSchema,
+     ShowTime,
      Booking
 };
