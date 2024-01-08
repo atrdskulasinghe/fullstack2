@@ -9,7 +9,7 @@ nav {
     display: flex;
 }
 
-.nav-content-0{
+.nav-content-0 {
     width: 60px;
     height: 100%;
     /* background-color: green; */
@@ -17,7 +17,7 @@ nav {
     align-items: center;
 }
 
-.menu-icon{
+.menu-icon {
     width: 30px;
     height: 25px;
     /* background-color: rgb(0, 23, 128); */
@@ -25,7 +25,7 @@ nav {
     cursor: pointer;
 }
 
-.menu-icon-line{
+.menu-icon-line {
     width: 100%;
     height: 3px;
     background: var(--white);
@@ -33,27 +33,28 @@ nav {
     transition: all 1s ease;
 }
 
-.menu-icon-line:nth-child(1){
+.menu-icon-line:nth-child(1) {
     top: 0;
 }
 
-.menu-icon-line:nth-child(2){
+.menu-icon-line:nth-child(2) {
     top: calc(50% - 1.5px);
 }
 
-.menu-icon-line:nth-child(3){
+.menu-icon-line:nth-child(3) {
     bottom: 0;
 }
 
-.menu-icon.active .menu-icon-line:nth-child(1){
+.menu-icon.active .menu-icon-line:nth-child(1) {
     top: calc(50% - 1.5px);
     transform: rotate(140deg);
 }
 
-.menu-icon.active .menu-icon-line:nth-child(2){
-    transform:rotateY(100deg)
+.menu-icon.active .menu-icon-line:nth-child(2) {
+    transform: rotateY(100deg)
 }
-.menu-icon.active .menu-icon-line:nth-child(3){
+
+.menu-icon.active .menu-icon-line:nth-child(3) {
     bottom: calc(50% - 1.5px);
     transform: rotate(-140deg);
 }
@@ -127,7 +128,7 @@ nav {
     width: 50%;
 }
 
-.nav-content-2-dsignup{
+.nav-content-2-dsignup {
     display: flex;
     justify-content: right;
     align-items: center;
@@ -135,7 +136,7 @@ nav {
     position: relative;
 }
 
-.nav-content-2-dprofile{
+.nav-content-2-dprofile {
     width: 40px;
     height: 40px;
     /* background-color: green; */
@@ -148,30 +149,30 @@ nav {
     /* display: none; */
 }
 
-.nav-content-2-dprofile img{
+.nav-content-2-dprofile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.nav-content-2-dbutton{
+.nav-content-2-dbutton {
     width: 120px;
     height: 30px;
     background: var(--white);
 }
 
-.nav-content-2-dbutton:hover{
+.nav-content-2-dbutton:hover {
     border: 1px solid var(--gray);
 }
 
-.nav-content-2-dbutton a{
+.nav-content-2-dbutton a {
     color: var(--gray);
 }
 
 /* navigation content 3 */
 
-.nav-content-3{
+.nav-content-3 {
     width: 150px;
     height: 100%;
     /* background-color: red; */
@@ -180,41 +181,68 @@ nav {
     justify-content: right;
 }
 
-.nav-content-3 img{
+.nav-content-3 img {
     width: 30px;
 }
 
-.nav-content-3 button{
+.nav-content-3 button {
     width: 80px;
     height: 30px;
     margin-left: 10px;
 }
 
-@media(max-width: 992px){
+.nav-content-4 {
+    width: 150px;
+    height: 70px;
+    /* background-color: rgb(25, 0, 255); */
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    display: none;
+}
 
-    .nav-content-0{
+.nav-contet-4-profile {
+    width: 50px;
+    height: 50px;
+    /* background-color: rgb(4, 11, 19); */
+}
+
+.nav-contet-4-profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+@media(max-width: 992px) {
+
+    .nav-content-0 {
         display: flex;
     }
 
-    .nav-content-1{
+    .nav-content-1 {
         width: calc(100% - 140px);
     }
 
-    .nav-content-1 h3{
+    .nav-content-1 h3 {
         font-size: 25px;
     }
 
-    .nav-content-2{
+    .nav-content-2 {
         display: none;
     }
 
-    .nav-content-3{
+    .nav-content-3 {
+        display: flex;
+        /* display: none; */
+    }
+
+    .nav-content-4 {
         display: flex;
     }
 }
 
-@media(max-width: 576px){
-    .nav-content-1 h3{
+@media(max-width: 576px) {
+    .nav-content-1 h3 {
         font-size: 20px;
     }
 }

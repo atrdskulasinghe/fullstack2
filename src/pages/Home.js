@@ -12,8 +12,10 @@ import ticket from '../images/ui/Ticket.png';
 import play from '../images/ui/Play button arrowhead.png';
 
 export default function Home() {
+
     useEffect(() => {
-        const handleMenuToggle = () => {
+
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -31,8 +33,8 @@ export default function Home() {
             }
         };
 
-        handleMenuToggle();
     }, []);
+
     return (
         <div>
             <div class="container">

@@ -18,7 +18,7 @@ export default function Menu() {
                 {/* <a href="">
                     <p>Movies</p>
                 </a> */}
-                <Link to="../"><p>Movies</p></Link>
+                <Link to="../movies"><p>Movies</p></Link>
             </div>
             {/* <div class="menu-item">
                 <a href="">
@@ -29,13 +29,13 @@ export default function Menu() {
                 {/* <a href="">
                     <p>About</p>
                 </a> */}
-                <Link to="../"><p>About</p></Link>
+                <Link to="../about"><p>About</p></Link>
             </div>
             <div className="menu-item">
                 {/* <a href="">
                     <p>Contact Us</p>
                 </a> */}
-                <Link to="../"><p>Contact Us</p></Link>
+                <Link to="../contact"><p>Contact Us</p></Link>
             </div>
         </div>
     </div>

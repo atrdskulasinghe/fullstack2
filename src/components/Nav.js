@@ -74,12 +74,23 @@ export default function Nav() {
                             </button>
                         </div>
                         {/* <!-- mobile --> */}
-                        <div className="nav-content-3">
-                            <a href=""><img src="./components/images/ticket.png" alt="" /></a>
-                            <button className="btn">
-                                <Link className='btn btn-a' to="../login">SIGN IN</Link>
-                            </button>
-                        </div>
+
+                        {
+                            !isLoggedIn ? (
+                                <div className="nav-content-3">
+                                    <a href=""><img src="./components/images/ticket.png" alt="" /></a>
+                                    <button className="btn">
+                                        <Link className='btn btn-a' to="../login">SIGN IN</Link>
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="nav-content-4">
+                                    <div className="nav-contet-4-profile">
+                                        <img src={imageCover} alt="fasd" />
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </nav>

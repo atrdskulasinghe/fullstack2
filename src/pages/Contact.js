@@ -10,7 +10,8 @@ import background from '../images/ui/background-3.jpg';
 
 export default function Contact() {
     useEffect(() => {
-        const handleMenuToggle = () => {
+
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -28,7 +29,6 @@ export default function Contact() {
             }
         };
 
-        handleMenuToggle();
     }, []);
     return (
         <div>

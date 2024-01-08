@@ -23,7 +23,8 @@ export default function Login() {
 
 
     useEffect(() => {
-        const handleMenuToggle = () => {
+
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -41,7 +42,6 @@ export default function Login() {
             }
         };
 
-        handleMenuToggle();
     }, []);
 
     const getUser = () => {

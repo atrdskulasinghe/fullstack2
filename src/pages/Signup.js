@@ -20,16 +20,12 @@ export default function Signup() {
 
     const [loggedInUserEmail, setLoggedInUserEmail] = useState("");
 
-
     useEffect(() => {
+
         const userEmail = sessionStorage.getItem('loggedInUserEmail');
         setLoggedInUserEmail(userEmail);
 
-        // if(userEmail !== "" || userEmail !== undefined){
-        //     window.location.href= "../";
-        // }
-
-        const handleMenuToggle = () => {
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -47,7 +43,6 @@ export default function Signup() {
             }
         };
 
-        handleMenuToggle();
     }, []);
 
     const addNewUser = () => {

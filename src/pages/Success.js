@@ -9,7 +9,8 @@ import Footer from '../components/Footer.js';
 export default function Success() {
 
     useEffect(() => {
-        const handleMenuToggle = () => {
+
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -27,7 +28,6 @@ export default function Success() {
             }
         };
 
-        handleMenuToggle();
     }, []);
 
     return (

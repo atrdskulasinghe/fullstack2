@@ -8,8 +8,10 @@ import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
 
 export default function Movies() {
+    
     useEffect(() => {
-        const handleMenuToggle = () => {
+
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -27,8 +29,8 @@ export default function Movies() {
             }
         };
 
-        handleMenuToggle();
     }, []);
+
     return (
         <div>
             <div className="container">

@@ -10,7 +10,8 @@ import imageCover from '../images/movie/cover/1.jpg';
 
 export default function Movie() {
     useEffect(() => {
-        const handleMenuToggle = () => {
+
+        return () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
             const menuClose = document.querySelector(".menu-close");
@@ -28,7 +29,6 @@ export default function Movie() {
             }
         };
 
-        handleMenuToggle();
     }, []);
     return (
         <div>
