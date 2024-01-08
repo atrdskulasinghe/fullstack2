@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { React, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
 import './components/style/nav.css';
 import './components/style/style.css';
@@ -25,14 +25,28 @@ import AddedShowtimes from './pages/admin/AddedShowtimes.js';
 import EditShowtime from './pages/admin/EditShowtime.js';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInUser = sessionStorage.getItem('loggedInUserEmail');
+    if (loggedInUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('loggedInUserEmail');
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className="App">
       <Router>
         <Routes>
           {/* Corrected Route for Home */}
           <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={!isLoggedIn ? <Login /> : <Navigate to="../" />} />
+          <Route path="/signup" element={!isLoggedIn ? <Signup /> : <Navigate to="../" />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/movie" element={<Movie />} />
@@ -40,6 +54,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/seatbook" element={<SeatBook />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/logout" element={{handleLogout}} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/add-movies" element={<AddMovies />} />
           <Route path="/admin/add-showtimes" element={<AddShowtimes />} />

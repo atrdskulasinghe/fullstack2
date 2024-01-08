@@ -18,7 +18,17 @@ export default function Signup() {
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
+    const [loggedInUserEmail, setLoggedInUserEmail] = useState("");
+
+
     useEffect(() => {
+        const userEmail = sessionStorage.getItem('loggedInUserEmail');
+        setLoggedInUserEmail(userEmail);
+
+        // if(userEmail !== "" || userEmail !== undefined){
+        //     window.location.href= "../";
+        // }
+
         const handleMenuToggle = () => {
             const menuIcon = document.querySelector(".menu-icon");
             const menu = document.querySelector(".menu");
@@ -50,27 +60,27 @@ export default function Signup() {
         setConfirmPasswordError("");
 
 
-        if (newUser.firstName == "" || newUser.firstName == undefined || newUser.firstName == null) {
+        if (newUser.firstName === "" || newUser.firstName === undefined || newUser.firstName === null) {
             setFirstNameError("Please Enter your first name");
         }
 
-        if (newUser.lastName == "" || newUser.lastName == undefined || newUser.lastName == null) {
+        if (newUser.lastName === "" || newUser.lastName === undefined || newUser.lastName === null) {
             setLastNameError("Please Enter your last name");
         }
 
-        if (newUser.email == "" || newUser.email == undefined || newUser.email == null) {
+        if (newUser.email === "" || newUser.email === undefined || newUser.email === null) {
             setEmailError("Please Enter your email");
         }
 
-        if (newUser.phoneNumber == "" || newUser.phoneNumber == undefined || newUser.phoneNumber == null) {
+        if (newUser.phoneNumber === "" || newUser.phoneNumber === undefined || newUser.phoneNumber === null) {
             setPhoneNumberError("Please Enter your phone number");
         }
 
-        if (newUser.password == "" || newUser.password == undefined || newUser.password == null) {
+        if (newUser.password === "" || newUser.password === undefined || newUser.password === null) {
             setPasswordError("Please Enter your first password");
         }
 
-        if (newUser.confirmPassword == "" || newUser.confirmPassword == undefined || newUser.confirmPassword == null) {
+        if (newUser.confirmPassword === "" || newUser.confirmPassword === undefined || newUser.confirmPassword === null) {
             setConfirmPasswordError("Please Enter your first confirm password");
         }
 
@@ -78,12 +88,12 @@ export default function Signup() {
             setConfirmPasswordError("New password and confirm password doesn't match Or don't match");
         }
 
-        if (newUser.firstName == "" || newUser.firstName == undefined || newUser.firstName == null) {
-        } else if (newUser.lastName == "" || newUser.lastName == undefined || newUser.lastName == null) {
-        } else if (newUser.email == "" || newUser.email == undefined || newUser.email == null) {
-        } else if (newUser.phoneNumber == "" || newUser.phoneNumber == undefined || newUser.phoneNumber == null) {
-        } else if (newUser.password == "" || newUser.password == undefined || newUser.password == null) {
-        } else if (newUser.confirmPassword == "" || newUser.confirmPassword == undefined || newUser.confirmPassword == null) {
+        if (newUser.firstName === "" || newUser.firstName === undefined || newUser.firstName === null) {
+        } else if (newUser.lastName === "" || newUser.lastName === undefined || newUser.lastName === null) {
+        } else if (newUser.email === "" || newUser.email === undefined || newUser.email === null) {
+        } else if (newUser.phoneNumber === "" || newUser.phoneNumber === undefined || newUser.phoneNumber === null) {
+        } else if (newUser.password === "" || newUser.password === undefined || newUser.password === null) {
+        } else if (newUser.confirmPassword === "" || newUser.confirmPassword === undefined || newUser.confirmPassword === null) {
         } else if (newUser.password !== newUser.confirmPassword) {
         } else {
             axios
@@ -137,7 +147,7 @@ export default function Signup() {
             <div className="container">
                 <Menu></Menu>
                 <Nav></Nav>
-
+{/* <p>Logged-in User's Email: {loggedInUserEmail}</p> */}
                 <section>
                     <div className="signup-content">
                         <div className="signup-box">

@@ -198,6 +198,9 @@
 /* ----- add-movies page starts from here ----- */
 
 .page-content .right-content .right-page-background .right-page .movie-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 160px;
   width: 120px;
   border-radius: 5px;
@@ -369,6 +372,11 @@
 }
 
 /* ----- added movies ------ */
+
+.error-message {
+  color: red;
+  font-size: 1.1rem;
+}
 
 .page-content .right-content .right-page-background .added-movies {
   background-color: #fff;

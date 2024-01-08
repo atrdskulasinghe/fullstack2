@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { React, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+
+import imageCover from '../images/movie/cover/1.jpg';
 
 export default function Nav() {
 
@@ -8,6 +10,14 @@ export default function Nav() {
         setMenuOpen(!menuOpen);
     };
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const loggedInUser = sessionStorage.getItem('loggedInUserEmail');
+        if (loggedInUser) {
+            setIsLoggedIn(true);
+        }
+    }, []);
 
     return (
         <div>
@@ -44,13 +54,20 @@ export default function Nav() {
                                 </li>
                             </ul>
                             {/* <!-- desktop --> */}
-                            <div className="nav-content-2-dsignup">
-                                {/* <a href="">Signup</a> */}
-                                <Link to="../signup">Signup</Link>
-                            </div>
-                            <div className="nav-content-2-dprofile">
-                                <img src="" alt="" />
-                            </div>
+
+                            {
+                                !isLoggedIn ? (
+                                    <div className="nav-content-2-dsignup">
+                                        {/* <a href="">Signup</a> */}
+                                        <Link to="../signup">Signup</Link>
+                                    </div>
+                                ) : (
+                                    <div className="nav-content-2-dprofile" style={{ background: "red" }}>
+                                        <img src={imageCover} alt="fasd" />
+                                    </div>
+                                )
+                            }
+
                             {/* <button class="nav-content-2-dbutton btn">BOOK A TICKET</button> */}
                             <button className="btn nav-content-2-dbutton">
                                 <Link className='btn btn-a' to="../movies">BOOK A TICKET</Link>
